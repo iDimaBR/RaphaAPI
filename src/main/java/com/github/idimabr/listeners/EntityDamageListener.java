@@ -17,11 +17,7 @@ public class EntityDamageListener implements Listener {
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent e){
         if(!(e.getEntity() instanceof LivingEntity)) return;
-
         LivingEntity entity = (LivingEntity) e.getEntity();
-        if(!entity.hasMetadata("stacked")) return;
-        if(entity.getMetadata("stacked").size() == 0) return;
-
         if( (entity.getHealth() - (e.getDamage())) <= 0){
             e.setCancelled(true);
             e.setDamage(0);
