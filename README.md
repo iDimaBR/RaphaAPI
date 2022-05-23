@@ -2,19 +2,18 @@
 
 <p>Sua utilidade é para os desenvolvedores poderem utilizar novas opções de eventos e bibliotecas facilmente, ainda está básica, porém pretendo melhorá-la cada vez mais.</p>
 
-<b>JitPack <i>(Maven)</i></b>
+☛ <b>JitPack <i>(Maven)</i></b>
 
+  Repositório:
 ```
-☛ Repositório:
-
 <repository>
   <id>jitpack.io</id>
   <url>https://jitpack.io</url>
 </repository>
+```
 
-
-☛ Dependência:
-
+  Dependência:
+```
 <dependency>
   <groupId>com.github.iDimaBR</groupId>
   <artifactId>RaphaAPI</artifactId>
