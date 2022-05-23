@@ -15,16 +15,18 @@ import org.bukkit.metadata.FixedMetadataValue;
 public class EntityDamageListener implements Listener {
 
     @EventHandler
-    public void onDamage(EntityDamageByEntityEvent e){
+    public void onDamage(EntityDamageEvent e){
         if(!(e.getEntity() instanceof LivingEntity)) return;
         LivingEntity entity = (LivingEntity) e.getEntity();
         if( (entity.getHealth() - (e.getDamage())) <= 0){
-            e.setCancelled(true);
-            e.setDamage(0);
 
             EntityDamageEvent.DamageCause cause = e.getCause();
-            EntityPreDeathEvent preDeath = new EntityPreDeathEvent(entity, cause);
-            Bukkit.getServer().getPluginManager().callEvent(preDeath);
+            EntityPreDeathEvent event = new EntityPreDeathEvent(entity, cause);
+            System.out.println("Chamou o evento EntityPreDeathEvent");
+            Bukkit.getServer().getPluginManager().callEvent(event);
+            if(event.isCancelled()) {
+                e.setDamage(0);
+            }
         }
     }
 }

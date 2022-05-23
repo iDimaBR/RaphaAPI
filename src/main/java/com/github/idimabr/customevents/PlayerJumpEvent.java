@@ -5,11 +5,9 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class PlayerChangeChunkEvent extends BaseEventCancellable {
+public class PlayerJumpEvent extends BaseEventCancellable {
 
     private final HandlerList HANDLERS = new HandlerList();
     private Player player;
@@ -17,7 +15,7 @@ public class PlayerChangeChunkEvent extends BaseEventCancellable {
     private Location to;
     private boolean cancelled;
 
-    public PlayerChangeChunkEvent(Player player, Location from, Location to) {
+    public PlayerJumpEvent(Player player, Location from, Location to) {
         this.player = player;
         this.from = from;
         this.to = to;
@@ -50,14 +48,6 @@ public class PlayerChangeChunkEvent extends BaseEventCancellable {
 
     public Block getBlockTo(){
         return this.to.getBlock();
-    }
-
-    public Chunk getFromChunk() {
-        return this.from.getChunk();
-    }
-
-    public Chunk getToChunk() {
-        return this.to.getChunk();
     }
 
     @Override

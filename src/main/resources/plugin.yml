@@ -1,7 +1,6 @@
 name: RaphaAPI
 version: '${project.version}'
 main: com.github.idimabr.RaphaAPI
-api-version: 1.16
 prefix: RaphaAPI
 authors: [ iDimaBR ]
 description: Helping developers with custom events and api's
