@@ -5,12 +5,17 @@
 <b>JitPack <i>(Maven)</i></b>
 
 ```
+☛ Repositório:
+
 <repositories>
   <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
   </repository>
 </repositories>
+
+
+☛ Dependência:
 
 <dependency>
   <groupId>com.github.iDimaBR</groupId>
