@@ -23,9 +23,7 @@ public class EntityDamageListener implements Listener {
             final EntityDamageEvent.DamageCause cause = e.getCause();
             final EntityPreDeathEvent event = new EntityPreDeathEvent(entity, cause);
             Bukkit.getServer().getPluginManager().callEvent(event);
-            if(event.isCancelled()) {
-                e.setDamage(0);
-            }
+            if(event.isCancelled()) e.setDamage(0);
         }
     }
 }

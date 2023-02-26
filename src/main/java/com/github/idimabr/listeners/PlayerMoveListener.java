@@ -19,7 +19,6 @@ public class PlayerMoveListener implements Listener {
 
         final PlayerChangeChunkEvent event = new PlayerChangeChunkEvent(player, from, to);
         Bukkit.getServer().getPluginManager().callEvent(event);
-        if(event.isCancelled())
-            e.setCancelled(true);
+        if(event.isCancelled()) e.setCancelled(true);
     }
 }

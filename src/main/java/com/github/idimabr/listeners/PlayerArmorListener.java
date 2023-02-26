@@ -1,8 +1,11 @@
 package com.github.idimabr.listeners;
 
 import com.github.idimabr.customevents.ArmorChangeEvent;
-import com.github.idimabr.customevents.enums.ChangeType;
+import com.github.idimabr.enums.ChangeType;
+import com.github.idimabr.enums.ArmorType;
+import net.minecraft.server.v1_8_R3.ItemArmor;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,8 +27,7 @@ public class PlayerArmorListener implements Listener {
         final PlayerInventory inventory = player.getInventory();
         final ArmorChangeEvent event = new ArmorChangeEvent(player, item, inventory.getArmorContents(), ChangeType.INVENTORY);
         Bukkit.getServer().getPluginManager().callEvent(event);
-        if(event.isCancelled())
-            e.setCancelled(true);
+        if(event.isCancelled()) e.setCancelled(true);
     }
 
     @EventHandler
@@ -35,18 +37,23 @@ public class PlayerArmorListener implements Listener {
         if(!e.getAction().toString().contains("RIGHT_CLICK")) return;
         if(item == null) return;
         if(!isArmor(item)) return;
+        if(!haveSpace(player, item)) return;
 
         final PlayerInventory inventory = player.getInventory();
 
         final ArmorChangeEvent event = new ArmorChangeEvent(player, item, inventory.getArmorContents(), ChangeType.HAND);
         Bukkit.getServer().getPluginManager().callEvent(event);
-        if(event.isCancelled())
-            e.setCancelled(true);
+        if(event.isCancelled()) e.setCancelled(true);
+    }
+
+    private boolean haveSpace(Player player, ItemStack item){
+        final ArmorType type = ArmorType.valueOf(item.getType().name().split("_")[1]);
+        final ItemStack slotItem = player.getInventory().getArmorContents()[type.getId()];
+        return slotItem == null || slotItem.getType() == Material.AIR;
     }
 
     private boolean isArmor(ItemStack item){
-        String name = item.getType().toString().toUpperCase();
-        return !name.contains("HELMET") || !name.contains("CHESTPLATE") || !name.contains("LEGGINGS") || !name.contains("BOOTS");
+        return item.getItemMeta() instanceof ItemArmor;
     }
 
 }

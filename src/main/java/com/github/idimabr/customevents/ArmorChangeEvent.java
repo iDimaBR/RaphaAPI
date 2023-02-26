@@ -1,7 +1,7 @@
 package com.github.idimabr.customevents;
 
 import com.github.idimabr.customevents.base.BaseEventCancellable;
-import com.github.idimabr.customevents.enums.ChangeType;
+import com.github.idimabr.enums.ChangeType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;

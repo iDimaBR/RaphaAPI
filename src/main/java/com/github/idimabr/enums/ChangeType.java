@@ -1,4 +1,4 @@
-package com.github.idimabr.customevents.enums;
+package com.github.idimabr.enums;
 
 public enum ChangeType {
 
