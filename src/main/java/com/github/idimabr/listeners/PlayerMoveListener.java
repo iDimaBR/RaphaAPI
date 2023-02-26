@@ -12,15 +12,13 @@ public class PlayerMoveListener implements Listener {
 
     @EventHandler
     public void onMoveChunk(PlayerMoveEvent e){
-        Player player = e.getPlayer();
-        Location from = e.getFrom();
-        Location to = e.getTo();
-
+        final Player player = e.getPlayer();
+        final Location from = e.getFrom();
+        final Location to = e.getTo();
         if(from.getChunk() == to.getChunk()) return;
 
-        PlayerChangeChunkEvent event = new PlayerChangeChunkEvent(player, from, to);
+        final PlayerChangeChunkEvent event = new PlayerChangeChunkEvent(player, from, to);
         Bukkit.getServer().getPluginManager().callEvent(event);
-        System.out.println("Chamou o evento PlayerChangeChunkEvent");
         if(event.isCancelled())
             e.setCancelled(true);
     }

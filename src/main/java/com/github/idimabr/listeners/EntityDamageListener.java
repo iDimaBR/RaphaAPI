@@ -17,12 +17,11 @@ public class EntityDamageListener implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent e){
         if(!(e.getEntity() instanceof LivingEntity)) return;
-        LivingEntity entity = (LivingEntity) e.getEntity();
-        if( (entity.getHealth() - (e.getDamage())) <= 0){
+        final LivingEntity entity = (LivingEntity) e.getEntity();
 
-            EntityDamageEvent.DamageCause cause = e.getCause();
-            EntityPreDeathEvent event = new EntityPreDeathEvent(entity, cause);
-            System.out.println("Chamou o evento EntityPreDeathEvent");
+        if( (entity.getHealth() - (e.getDamage())) <= 0){
+            final EntityDamageEvent.DamageCause cause = e.getCause();
+            final EntityPreDeathEvent event = new EntityPreDeathEvent(entity, cause);
             Bukkit.getServer().getPluginManager().callEvent(event);
             if(event.isCancelled()) {
                 e.setDamage(0);

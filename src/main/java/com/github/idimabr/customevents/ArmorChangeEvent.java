@@ -1,6 +1,7 @@
 package com.github.idimabr.customevents;
 
 import com.github.idimabr.customevents.base.BaseEventCancellable;
+import com.github.idimabr.customevents.enums.ChangeType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
@@ -12,13 +13,16 @@ public class ArmorChangeEvent extends BaseEventCancellable {
 
     private ItemStack item;
 
+    private ChangeType type;
+
     private ItemStack[] armor;
     private boolean cancelled;
 
-    public ArmorChangeEvent(Player player, ItemStack item, ItemStack[] armor) {
+    public ArmorChangeEvent(Player player, ItemStack item, ItemStack[] armor, ChangeType type) {
         this.player = player;
         this.item = item;
         this.armor = armor;
+        this.type = type;
     }
 
     @Override
@@ -40,6 +44,10 @@ public class ArmorChangeEvent extends BaseEventCancellable {
 
     public ItemStack[] getArmorContents(){
         return armor;
+    }
+
+    public ChangeType getChangeType() {
+        return type;
     }
 
     @Override
