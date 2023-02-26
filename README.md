@@ -1,4 +1,4 @@
-<h3>RaphaAPI</h3>
+# RaphaAPI
 
 <p>Sua utilidade é para os desenvolvedores poderem utilizar novas opções de eventos e bibliotecas facilmente, ainda está básica, porém pretendo melhorá-la cada vez mais.</p>
 
@@ -34,7 +34,7 @@
 - `ItemBuilder` - Criador de item para facilitar manuseio.
 - `MoneyUtil` - Utilidades na hora de trabalhar com dinheiro.
 
-➥ SQLConnector
+# SQLConnector
 
 Para instanciar a conexão, temos dois meios:
 
